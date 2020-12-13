@@ -1,22 +1,6 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts.css);
 
-@keyframes pulse {
-    0% {
-        transform: scale(1, 1);
-        -webkit-transform: scale(1, 1);
-      }
-
-    50% {
-        transform: scale(1.1);
-        -webkit-transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1, 1);
-        -webkit-transform: scale(1, 1);
-    }
-}
-
 .body {
     background: linear-gradient(180deg, #F5F5FB 0%, #F2F2F6 100%);
 }
@@ -38,7 +22,7 @@
 .page__background {
     position: absolute;
     z-index: 0;
-    top: 294px;
+    top: 437px;
     width: 100%;
     height: 500px;
     background-image: url(./images/mask.png);
@@ -46,14 +30,27 @@
     background-repeat: no-repeat;
 }
 
+.page__background-light {
+    position: absolute;
+    z-index: 0;
+    top: 294px;
+    width: 100%;
+    height: 500px;
+    background-image: url(./images/bg2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    visibility: hidden;
+}
+
 .reviews {
     max-width: 86.5%;
-    margin: 0 auto;
+    margin: 0 auto 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 500px;
     z-index: 1;
+    position: relative;
 }
 
 .reviews__title {
@@ -83,29 +80,29 @@
 }
 
 .reviews__item-sound {
-    height: 119px;
-    width: 119px;
+    height: 316px;
+    width: 321px;
     padding: 0;
     background-color: transparent;
-    background-image: url(./images/sound.svg);
+    background-image: url(./images/sound.png);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: contain;
     border: none;
     outline: none;
     cursor: pointer;
     transition: all 0.5s ease;
+    margin-bottom: -56px;
 }
 
 .reviews__item-sound_active {
     background-image: url(./images/sound.png);
     background-size: cover;
     animation: pulse 2s linear infinite;
-    /* margin-bottom: -56px; */
     transition: all 0.5s ease;
 }
 
 .reviews__item-sound:hover {
-    background-image: url(./images/sound-hover.svg);
     animation: pulse 2s linear infinite;
 }
 
@@ -154,6 +151,14 @@
     margin-top: 26px;
 }
 
+.reviews__item-text:last-of-type {
+    margin-bottom: 0;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    top: 56%;
+}
+
 .swiper-button-prev::after {
     content: url(./images/prev.svg);
     width: 70px;
@@ -198,7 +203,58 @@
     background: #7CBCF3;
 }
 
+.swiper-pagination {
+    position: inherit;
+    margin-bottom: 50px;
+}
+
+.swiper-pagination-bullets {
+    visibility: hidden;
+    display: flex;
+    justify-content: space-around;
+}
+
+.swiper-pagination-bullet, .swiper-pagination-bullet-active {
+    background: url(./images/bullet.svg);
+    width: 11px;
+    height: 13.56px;
+    background-size: cover;
+    border-radius: 0%;
+}
+
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: -30px;
+}
+
+.swiper-scrollbar {
+    max-width: 678px;
+    position: absolute;
+    left: 1%;
+    right: 0;
+    bottom: 3px;
+    z-index: 50;
+    height: 5px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
 @media screen and (max-width: 1440px) {
+    .swiper-pagination-bullets {
+        visibility: visible;
+        overflow-y: visible;
+    }
+
+    .reviews__slider {
+        margin: 40px 0 0;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .reviews {
+        overflow-y: visible;
+    }
     .swiper-button-prev::after {
         content: url(./images/prev-1440.svg);
         width: 30px;
@@ -227,6 +283,10 @@
     .page__background {
         display: none;
     }
+
+    .page__background-light {
+        visibility: visible;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -236,9 +296,16 @@
 }
 
 @media screen and (max-width: 768px) {
+    .reviews__slider {
+        margin: 20px 0 0;
+    }
     .reviews__title {
         font-size: 35px;
         line-height: 45px;
+    }
+    .reviews__item-sound {
+        width: 300px;
+        height: 304.19px;
     }
     .reviews__item-name {
         font-size: 25px;
@@ -246,12 +313,20 @@
     .swiper-scrollbar {
         visibility: visible;
     }
+    .swiper-pagination-bullets {
+        visibility: hidden;
+    }
 }
 
 @media screen and (max-width: 475px) {
     .reviews__title {
         font-size: 30px;
         line-height: 40px;
+    }
+
+    .reviews__item-sound {
+        width: 257,34px;
+        height: 253.33px;
     }
 
     .reviews__item-name {
@@ -279,6 +354,20 @@
         top: 30%;
         left: 20px;
     }
+}
 
+@keyframes pulse {
+    0% {
+        transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+      }
 
+    50% {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+    }
 }

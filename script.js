@@ -2,6 +2,7 @@ const sounds = ['sound.mp3', 'sound2.mp3', 'sound3.mp3'];
 const soundBtns = document.querySelectorAll('.reviews__item-sound');
 
 const mySlider = new Swiper('.swiper-container', {
+    autoHeight: true,
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -10,6 +11,10 @@ const mySlider = new Swiper('.swiper-container', {
         el: '.swiper-scrollbar',
         draggable: true,
     },
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets'
+      },
     breakpoints: {
         1600: {
             spaceBetween: 65,
